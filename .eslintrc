@@ -1,0 +1,7 @@
+{
+  "extends": "@antfu",
+  "rules":{
+    "no-console":0,
+    "vue/attribute-hyphenation": 0
+  }
+}

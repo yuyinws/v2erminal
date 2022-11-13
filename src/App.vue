@@ -1,48 +1,24 @@
 <script lang="ts" setup>
-// All imports are automatic but if you want to import anything,
-// remember to import from 'vue-termui':
-// import { ref } from 'vue-termui'
+import { storeToRefs } from 'pinia'
 
-const n = ref(0)
-
-const counter = ref(0)
-onKeyData(['+', 'ArrowRight', 'ArrowUp'], () => {
-  counter.value++
-})
-onKeyData(['-', 'ArrowLeft', 'ArrowDown'], () => {
-  counter.value--
-})
-
-useInterval(() => {
-  n.value++
-}, 600)
+const { currentComponent } = storeToRefs(useComponentStore())
 </script>
 
 <template>
-  <Box
-    :padding="2"
-    :margin="2"
-    width="100%"
-    :maxWidth="50"
+  <Div
+    width="100"
+    paddingX="1"
     justifyContent="center"
     alignItems="center"
     flexDirection="column"
-    borderColor="yellowBright"
+    borderColor="white"
     borderStyle="round"
   >
-    <Box :marginY="1">
-      <Text color="cyanBright">Hello World </Text>
-      <Text>{{ n % 2 ? '👋 ' : ' ✋' }}</Text>
-    </Box>
-    <Box>
-      <Text
-        >Counter:
-        <Text :color="counter < 0 ? 'red' : 'green'" bold>{{ counter }}</Text>
-        <Text dimmed>
-          (<Text color="red" bold>-</Text>/<Text bold color="green">+</Text> to
-          change it)</Text
-        >
-      </Text>
-    </Box>
-  </Box>
+    <Header />
+    <Div v-if="currentComponent === 'topic'" width="100" flexDirection="column">
+      <Nodes />
+      <Topics />
+    </Div>
+    <Detail v-else-if="currentComponent === 'detail'" />
+  </Div>
 </template>
