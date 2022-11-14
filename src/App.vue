@@ -12,7 +12,7 @@ const { currentComponent } = storeToRefs(useComponentStore())
     alignItems="center"
     flexDirection="column"
     borderColor="white"
-    borderStyle="round"
+    borderStyle="double"
   >
     <Header />
     <Div v-if="currentComponent === 'topic'" width="100" flexDirection="column">

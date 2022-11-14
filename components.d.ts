@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     Detail: typeof import('./src/components/Detail.vue')['default']
     Div: typeof import('vue-termui')['TuiBox']
     Header: typeof import('./src/components/Header.vue')['default']
+    Link: typeof import('vue-termui')['TuiLink']
     Nodes: typeof import('./src/components/Nodes.vue')['default']
     Span: typeof import('vue-termui')['TuiText']
     Topics: typeof import('./src/components/Topics.vue')['default']

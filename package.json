@@ -2,10 +2,13 @@
   "name": "v2erminal",
   "type": "module",
   "version": "0.0.0",
-  "private": true,
+  "description": "Reach V2ex on Terminal",
   "bin": {
-    "vtui-app": "./dist/main.mjs"
+    "v2ex": "./cli.mjs"
   },
+  "files": [
+    "dist/*.mjs"
+  ],
   "scripts": {
     "dev": "vtui dev",
     "build": "vtui build",
@@ -14,6 +17,7 @@
   "dependencies": {
     "@vue/runtime-core": "^3.2.41",
     "axios": "^1.1.3",
+    "dayjs": "^1.11.6",
     "ohmyfetch": "^0.4.21",
     "pinia": "^2.0.23",
     "vue": "^3.2.41",

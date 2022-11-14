@@ -5,7 +5,7 @@ const nodeStore = useNodeStore()
 const topicStore = useTopicStore()
 
 const { nodes, activeIndex } = storeToRefs(nodeStore)
-const { _getTopics } = topicStore
+const { getTopics, topics } = topicStore
 
 onKeyData(['ArrowRight'], () => {
   const nodesLength = nodes.value.length
@@ -16,7 +16,8 @@ onKeyData(['ArrowRight'], () => {
   activeIndex.value++
   nodes.value[activeIndex.value].isSelect = true
 
-  _getTopics(nodes.value[activeIndex.value].code)
+  getTopics(nodes.value[activeIndex.value].code)
+  topics.page = 1
 })
 
 onKeyData(['ArrowLeft'], () => {
@@ -27,18 +28,20 @@ onKeyData(['ArrowLeft'], () => {
   activeIndex.value--
   nodes.value[activeIndex.value].isSelect = true
 
-  _getTopics(nodes.value[activeIndex.value].code)
+  getTopics(nodes.value[activeIndex.value].code)
+  topics.page = 1
 })
 
 onMounted(() => {
-  _getTopics(nodes.value[activeIndex.value].code)
+  if (topics.list?.length < 1)
+    getTopics(nodes.value[activeIndex.value].code)
 })
 </script>
 
 <template>
-  <Div width="100" justifyContent="center" marginY="1">
-    <Div v-for="(node, index) in nodes" :key="index" marginRight="1">
-      <Span :color="node.isSelect ? 'red' : ''">{{ node.name }}</Span>
+  <Div width="100" justifyContent="center" marginY="1" borderStyle="classic">
+    <Div v-for="(node, index) in nodes" :key="index" marginRight="1" width="20">
+      <Span :color="node.isSelect ? '#3B82F6' : ''">{{ node.name }}</Span>
     </Div>
   </Div>
 </template>
