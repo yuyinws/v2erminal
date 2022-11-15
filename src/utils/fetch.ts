@@ -16,8 +16,10 @@ export async function fetchOptions(): Promise<FetchOptions> {
         Authorization: `Bearer ${TOKEN}`,
       },
     }
+
     const _proxy = proxy || process.env.http_proxy
     if (_proxy) {
+      // @ts-expect-error
       const agent = new HttpsProxyAgent(_proxy)
       op.agent = agent
     }

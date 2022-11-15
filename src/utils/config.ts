@@ -1,5 +1,5 @@
-import fs from 'fs/promises'
-import path from 'path'
+import fs from 'node:fs/promises'
+import path from 'node:path'
 import type { Config } from '@/type'
 
 const defaultNodes = [
@@ -44,8 +44,6 @@ const defaultNodes = [
 const home = process.platform === 'win32'
   ? process.env.USERPROFILE
   : process.env.HOME
-
-console.log(path)
 
 const defaultConfigPath = path.join(home || '~/', 'v2ex.json')
 

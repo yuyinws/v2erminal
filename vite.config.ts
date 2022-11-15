@@ -26,7 +26,7 @@ export default defineConfig({
 
   build: {
     rollupOptions: {
-      external: deps,
+      external: [/^node:/, ...deps],
     },
   },
 })

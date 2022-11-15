@@ -1,4 +1,4 @@
-import { $fetch } from 'ohmyfetch'
+import { ofetch } from 'ofetch'
 import { defineStore } from 'pinia'
 import { fetchOptions } from '@/utils'
 
@@ -8,7 +8,7 @@ export const useUserStore = defineStore('user', () => {
   async function getUserInfo() {
     try {
       const _fetchOptions = await fetchOptions()
-      const { result } = await $fetch('member', _fetchOptions)
+      const { result } = await ofetch('member', _fetchOptions)
       isLogin.value = true
       userName.value = result.username
     }

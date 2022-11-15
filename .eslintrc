@@ -2,6 +2,7 @@
   "extends": "@antfu",
   "rules":{
     "no-console":0,
-    "vue/attribute-hyphenation": 0
+    "vue/attribute-hyphenation": 0,
+    "@typescript-eslint/ban-ts-comment": 0
   }
 }
