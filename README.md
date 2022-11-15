@@ -1,11 +1,73 @@
-# Vue 3 + Typescript + Vite
+<p align="center">
+ <img src="https://cdn.jsdelivr.net/gh/yuyinws/static@master/2022/11/upgit_20221115_1668520164.png"/>
+</p>
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-## Recommended IDE Setup
+<p align="center">
+  Interactive terminal client for  <a href="https://v2ex.com">V2EX</a>. Powered by <a href="https://github.com/vue-terminal/vue-termui">vue-termui</a>.
+</p>
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
 
-## Type Support For `.vue` Imports in TS
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+## Preview
+<p align="center">
+ <img src="https://cdn.jsdelivr.net/gh/yuyinws/static@master/2022/11/upgit_20221115_1668521573.gif?"/>
+</p>
+
+
+
+## Install
+
+```sh
+npm install -g v2erminal
+```
+
+> Recommend node version 16
+
+## Usage
+
+1. Get a  [Personal V2ex Token](https://www.v2ex.com/settings/tokens)
+
+2. Set token as Environmental Variable
+
+   ```bash
+   export V2EX_TOKEN="XXXXXXXXX"
+   ```
+
+3. Open the terminal and then typing `V2EX`
+
+   ```bash
+   > v2ex
+   ```
+
+## Config
+
+```json
+// ~/v2ex.json
+
+{
+  "token": "xxxxxxxxxx",
+  "proxy": "http://127.0.0.1:7890",
+  "nodes": [
+    {
+      "name": "问与答",
+      "code": "qna"
+    },
+    {
+      "name": "酷工作",
+      "code": "jobs"
+    },
+    {
+      "name": "分享发现",
+      "code": "share"
+    }
+  ]
+}
+
+```
+
+
+
+## Known Issus
+
+- http proxy not working on `node >= 18`. 
