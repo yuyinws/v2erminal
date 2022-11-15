@@ -4,7 +4,7 @@
 
 
 <p align="center">
-  Interactive terminal client for  <a href="https://v2ex.com">V2EX</a>. Powered by <a href="https://github.com/vue-terminal/vue-termui">vue-termui</a>.
+  Interactive terminal client for  <a href="https://v2ex.com">V2EX</a>. Powered by <a href="https://github.com/vue-terminal/vue-termui">vue-termui</a> and <a href="https://www.v2ex.com/help/api">V2ex API</a>.
 </p>
 
 
@@ -37,14 +37,14 @@ npm install -g v2erminal
 3. Open the terminal and then typing `V2EX`
 
    ```bash
-   > v2ex
+   v2ex
    ```
 
 ## Config
 
-```json
-// ~/v2ex.json
+Create a file named `v2ex.json` in home path.
 
+```json
 {
   "token": "xxxxxxxxxx",
   "proxy": "http://127.0.0.1:7890",
