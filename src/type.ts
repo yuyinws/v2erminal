@@ -1,7 +1,7 @@
 export interface Node {
   name: string
   code: string
-  isSelect: boolean
+  isSelect?: boolean
 }
 
 export interface Topic {
@@ -37,6 +37,18 @@ export interface Detail {
   allReplies: Reply[] | null
   total: number
   page: number
+}
+
+export interface Config {
+  token?: string | null
+  nodes?: Node[] | null
+  proxy?: string | null
+}
+
+export interface FetchOptions {
+  baseURL: string
+  headers: any
+  agent?: any
 }
 
 export type Component = 'topic' | 'detail'

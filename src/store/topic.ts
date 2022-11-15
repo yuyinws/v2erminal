@@ -1,8 +1,7 @@
 import { $fetch } from 'ohmyfetch'
 import { defineStore } from 'pinia'
-import { fetchOptions } from '@/fetch/index'
+import { fetchOptions, replaceContent } from '@/utils'
 import type { Detail, Topics } from '@/type'
-import { replaceContent } from '@/utils'
 
 export const useTopicStore = defineStore('topic', () => {
   const componentStore = useComponentStore()
@@ -24,7 +23,8 @@ export const useTopicStore = defineStore('topic', () => {
 
   async function getTopics(node: string) {
     try {
-      const { result } = await $fetch(`nodes/${node}/topics?p=${topics.page}`, fetchOptions)
+      const _fetchOptions = await fetchOptions()
+      const { result } = await $fetch(`nodes/${node}/topics?p=${topics.page}`, _fetchOptions)
       topics.list = result.map((item: any, index: number) => {
         let isSelect = false
         if (index === 0)
@@ -40,26 +40,31 @@ export const useTopicStore = defineStore('topic', () => {
       topics.activeIndex = 0
     }
     catch (error) {
-      console.log('🚀 ~ file: topic.ts ~ line 13 ~ getTopics ~ error', error)
+      console.log(error)
+      process.exit(1)
     }
   }
 
   async function getDetail(topicId: number, total: number) {
     try {
-      const topicDetail = await $fetch(`topics/${topicId}`, fetchOptions)
+      const _fetchOptions = await fetchOptions()
+      const topicDetail = await $fetch(`topics/${topicId}`, _fetchOptions)
       detail.title = topicDetail.result.title
       detail.content = replaceContent(topicDetail.result.content)
-      detail.total = total ? Math.floor(total / 10) ? Math.floor(total / 10) : 1 : 1
+      detail.total = total ? Math.ceil(total / 20) ? Math.ceil(total / 20) : 1 : 1
+      detail.page = 1
       setComponent('detail')
     }
     catch (error) {
       console.log(error)
+      process.exit(1)
     }
   }
 
   async function getReplies(topicId: number) {
     try {
-      const replies = await $fetch(`topics/${topicId}/replies?p=${detail.page}`, fetchOptions)
+      const _fetchOptions = await fetchOptions()
+      const replies = await $fetch(`topics/${topicId}/replies?p=${detail.page}`, _fetchOptions)
       detail.replies = replies.result?.map((item: any, index: number) => {
         return {
           content: replaceContent(item.content),
@@ -71,6 +76,7 @@ export const useTopicStore = defineStore('topic', () => {
     }
     catch (error) {
       console.log(error)
+      process.exit(1)
     }
   }
 

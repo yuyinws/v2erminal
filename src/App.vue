@@ -1,7 +1,10 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
+import { getConfig } from './utils/config'
 
 const { currentComponent } = storeToRefs(useComponentStore())
+
+getConfig()
 </script>
 
 <template>
@@ -11,7 +14,6 @@ const { currentComponent } = storeToRefs(useComponentStore())
     justifyContent="center"
     alignItems="center"
     flexDirection="column"
-    borderColor="white"
     borderStyle="double"
   >
     <Header />

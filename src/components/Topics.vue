@@ -47,25 +47,25 @@ onKeyData(['p'], () => {
 </script>
 
 <template>
-  <Div flexDirection="column" alignItems="flex-start" width="100" borderStyle="single">
+  <Div flexDirection="column" alignItems="flex-start" width="100" borderStyle="single" paddingX="1">
     <Div v-for="item in list" :key="item.id" width="100" justifyContent="space-between">
-      <Div width="80">
-        <Span :color="item.isSelect ? 'yellow' : ''">{{ item.isSelect ? '> ' : '' }}{{ item.title }}</Span>
-      </Div>
       <Div>
+        <Span :color="item.isSelect ? 'yellow' : ''" :bold="item.isSelect">{{ item.isSelect ? '> ' : '' }}{{ item.title }}</Span>
+      </Div>
+      <Div justifyContent="space-between" width="20">
         <Div>
-          <Span :color="item.isSelect ? 'yellow' : ''">{{ dayjs(item.created * 1000).format('YYYY-MM-DD') }}</Span>
+          <Span :color="item.isSelect ? 'yellow' : ''" :bold="item.isSelect">{{ dayjs(item.created * 1000).format('YYYY-MM-DD') }}</Span>
         </Div>
-        <Div width="10" marginLeft="5">
-          <Span :color="item.isSelect ? 'yellow' : ''">{{ item.replies }}</Span>
+        <Div marginLeft="5">
+          <Span :color="item.isSelect ? 'yellow' : ''" :bold="item.isSelect">{{ item.replies }}</Span>
         </Div>
       </Div>
     </Div>
 
     <Div justifyContent="flex-end" width="100" marginTop="1">
-      <Span color="white" bold>[P]</Span>
+      <Span bold>[P]</Span>
       <Span>{{ ` ${topics.page} ` }}</Span>
-      <Span color="white" bold>[N]</Span>
+      <Span bold>[N]</Span>
     </Div>
   </Div>
 </template>

@@ -31,17 +31,12 @@ onKeyData(['ArrowLeft'], () => {
   getTopics(nodes.value[activeIndex.value].code)
   topics.page = 1
 })
-
-onMounted(() => {
-  if (topics.list?.length < 1)
-    getTopics(nodes.value[activeIndex.value].code)
-})
 </script>
 
 <template>
-  <Div width="100" justifyContent="center" marginY="1" borderStyle="classic">
+  <Div width="100" justifyContent="center" marginY="1" borderStyle="classic" paddingX="1">
     <Div v-for="(node, index) in nodes" :key="index" marginRight="1" width="20">
-      <Span :color="node.isSelect ? '#3B82F6' : ''">{{ node.name }}</Span>
+      <Span :bold="node.isSelect" :color="node.isSelect ? 'blue' : ''">{{ node.name }}</Span>
     </Div>
   </Div>
 </template>
