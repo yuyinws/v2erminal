@@ -1,7 +1,7 @@
 {
   "name": "v2erminal",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Interactive terminal client for V2EX.",
   "bin": {
     "v2ex": "./cli.mjs"
