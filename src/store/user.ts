@@ -1,14 +1,14 @@
 import { ofetch } from 'ofetch'
 import { defineStore } from 'pinia'
-import { fetchOptions } from '@/utils'
 
 export const useUserStore = defineStore('user', () => {
   const isLogin = ref(false)
   const userName = ref('')
+  const configStore = useConfigStore()
+  const { fetchOptions } = configStore
   async function getUserInfo() {
     try {
-      const _fetchOptions = await fetchOptions()
-      const { result } = await ofetch('member', _fetchOptions)
+      const { result } = await ofetch('member', fetchOptions())
       isLogin.value = true
       userName.value = result.username
     }

@@ -1,11 +1,13 @@
 import { ofetch } from 'ofetch'
 import { defineStore } from 'pinia'
-import { fetchOptions, replaceContent } from '@/utils'
+import { replaceContent } from '@/utils'
 import type { Detail, Topics } from '@/type'
 
 export const useTopicStore = defineStore('topic', () => {
   const componentStore = useComponentStore()
+  const configStore = useConfigStore()
   const { setComponent } = componentStore
+  const { fetchOptions } = configStore
   const topics: Topics = reactive({
     list: [],
     activeIndex: 0,
@@ -23,8 +25,7 @@ export const useTopicStore = defineStore('topic', () => {
 
   async function getTopics(node: string) {
     try {
-      const _fetchOptions = await fetchOptions()
-      const { result } = await ofetch(`nodes/${node}/topics?p=${topics.page}`, _fetchOptions)
+      const { result } = await ofetch(`nodes/${node}/topics?p=${topics.page}`, fetchOptions())
       topics.list = result.map((item: any, index: number) => {
         let isSelect = false
         if (index === 0)
@@ -47,8 +48,7 @@ export const useTopicStore = defineStore('topic', () => {
 
   async function getDetail(topicId: number, total: number) {
     try {
-      const _fetchOptions = await fetchOptions()
-      const topicDetail = await ofetch(`topics/${topicId}`, _fetchOptions)
+      const topicDetail = await ofetch(`topics/${topicId}`, fetchOptions())
       detail.title = topicDetail.result.title
       detail.content = replaceContent(topicDetail.result.content)
       detail.total = total ? Math.ceil(total / 20) ? Math.ceil(total / 20) : 1 : 1
@@ -63,8 +63,7 @@ export const useTopicStore = defineStore('topic', () => {
 
   async function getReplies(topicId: number) {
     try {
-      const _fetchOptions = await fetchOptions()
-      const replies = await ofetch(`topics/${topicId}/replies?p=${detail.page}`, _fetchOptions)
+      const replies = await ofetch(`topics/${topicId}/replies?p=${detail.page}`, fetchOptions())
       detail.replies = replies.result?.map((item: any, index: number) => {
         return {
           content: replaceContent(item.content),

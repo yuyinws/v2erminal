@@ -52,6 +52,7 @@ declare global {
   const unref: typeof import('vue-termui')['unref']
   const useAttrs: typeof import('vue-termui')['useAttrs']
   const useComponentStore: typeof import('./src/store/component')['useComponentStore']
+  const useConfigStore: typeof import('./src/store/config')['useConfigStore']
   const useInterval: typeof import('vue-termui')['useInterval']
   const useLog: typeof import('vue-termui')['useLog']
   const useNodeStore: typeof import('./src/store/node')['useNodeStore']
