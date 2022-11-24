@@ -56,8 +56,8 @@ onKeyData(['p'], () => {
         <Div>
           <Span :color="item.isSelect ? 'yellow' : ''" :bold="item.isSelect">{{ dayjs(item.created * 1000).format('YYYY-MM-DD') }}</Span>
         </Div>
-        <Div marginLeft="5">
           <Span :color="item.isSelect ? 'yellow' : ''" :bold="item.isSelect">{{ item.replies }}</Span>
+        <Div marginLeft="5" marginRight="3">
         </Div>
       </Div>
     </Div>
